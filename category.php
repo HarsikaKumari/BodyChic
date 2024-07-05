@@ -2,12 +2,29 @@
 include("admin_header.php")
 ?>
 
+<!-- form Styling -->
 <style>
+    .form_div {
+        background-image: url('./assets/images/formCategory.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        color: red;
+        height: 100vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
     .form-container {
         padding: 20px;
+        margin-left: 30%;
         border: 1px solid red;
         border-radius: 5px;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 800px;
     }
 
     .form-group label {
@@ -23,9 +40,20 @@ include("admin_header.php")
         background-color: red;
         color: white;
     }
+
+    @media (max-width: 768px) {
+        body {
+            justify-content: center;
+        }
+
+        .form-container {
+            margin: 20px;
+            width: auto;
+        }
+    }
 </style>
 
-
+<!-- breadcrumb section -->
 <div class="breadcrumb-contentnhy">
     <div class="container">
         <nav aria-label="breadcrumb">
@@ -42,24 +70,26 @@ include("admin_header.php")
 </div>
 </section>
 
-<div class="p-4">
-    <div class="text-center text-secondary fs-4 pb-4">
-        <img src="./assets/images/addIcon.png" alt="addIcon" class="justify-center" style="height: 30px; width:30px;">
-        <strong>Add Category</strong>
-
-    </div>
+<!-- Form for add category -->
+<div class="p-4 form_div">
 
     <div class="form-container">
+
+        <div class="header-container">
+            <img src="./assets/images/addIcon.png" alt="addIcon">
+            <strong>Add Category</strong>
+        </div>
+
         <form action="category.php" method="post" enctype="multipart/form-data">
             <div class="form-group row">
-                <label for="category" class="col-sm-2 col-form-label">Category Name</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext" id="category" name="category" placeholder="Tops">
+                <label for="category" class="col-sm-4 col-form-label">Category Name</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="category" name="category" placeholder="Eg: Tops">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="thumbnail" class="col-sm-2 col-form-label">Thumbnail</label>
-                <div class="col-sm-10">
+                <label for="thumbnail" class="col-sm-4 col-form-label">Thumbnail</label>
+                <div class="col-sm-8">
                     <input type="file" class="form-control-file" id="thumbnail" name="thumbnail">
                 </div>
             </div>
@@ -68,8 +98,8 @@ include("admin_header.php")
     </div>
 </div>
 
+<!-- inserting data in database -->
 <?php
-
 if (isset($_POST["submit"])) {
     $category = $_POST["category"];
     $thumbnail = $_FILES["thumbnail"];
@@ -107,6 +137,55 @@ if (isset($_POST["submit"])) {
     }
 }
 ?>
+<!-- accessing data from database -->
+<?php
+$s_no = 1;
+?>
+
+<!-- Manage Category -->
+<div class="text-center text-secondary fs-5 pb-4">
+    <img src="./assets/images/manageIcon.png" alt="addIcon" class="justify-center">
+    <strong>Manage Category</strong>
+    <div class=" d-flex align-items-center justify-content-center flex-wrap">
+
+        <?php
+        //1. database connect
+        include("config.php");
+        //2. query
+        //SELECT * from `table`
+        $query = "SELECT * from `category`";
+        //3. query run with database
+        $result = mysqli_query($connect, $query);
+        //4. result use
+        // print_r($result);
+        $sno = 1;
+        while ($data = mysqli_fetch_assoc($result)) {
+            //  print_r($data);
+            //  Array ( [id] => 6 [category_name] => Dresses [thumbnail] => 9998221411.jpg [status] => Active [created_at] => 2024-07-05 12:48:31.743273 )
+        ?>
+            <div class="card" style="width: 18rem; margin:4rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $s_no ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $data["category_name"] ?></h6>
+                    <p class="card-img-top">
+                        <img src="category_images/<?php echo $data['thumbnail'] ?>" style="height:200px;width:200px;">
+                    </p>
+                    <a href="category.php" class="btn btn-danger">
+                        <img src="./assets/images/deleteIcon.png" alt="">
+                    </a>
+                    <a href="category.php" class="btn btn-danger">
+                        <img src="./assets/images/editIcon.png" alt="">
+                    </a>
+                </div>
+            </div>
+
+        <?php
+            // $sno=$sno+1;
+            $s_no++;
+        }
+        ?>
+    </div>
+</div>
 
 <?php
 include("footer.php");

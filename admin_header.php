@@ -82,14 +82,14 @@
                                         <a class="nav-link" href="admin_index.php">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="add_category.php">Add Category</a>
+                                        <a class="nav-link" href="add_category.php">Manage Category</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="add_styles.php">Add Styles</a>
+                                        <a class="nav-link" href="add_styles.php">Manage Styles</a>
                                     </li>
 
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="contact.php">Add Colors</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact.php">Manage Colors</a>
                                     </li>
                                 </ul>
 
