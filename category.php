@@ -119,7 +119,7 @@ if (isset($_POST["submit"])) {
     if ($result) {
 ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Product Added</strong>
+            <strong>Category Added</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -128,7 +128,7 @@ if (isset($_POST["submit"])) {
     } else {
     ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Product Not Added Try Again Later!</strong>
+            <strong>Category Not Added Try Again Later!</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -142,8 +142,23 @@ if (isset($_POST["submit"])) {
 $s_no = 1;
 ?>
 
+<?php
+if (isset($_GET["msg"])) {
+?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong><?php echo $_GET['msg'] ?></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php
+    // echo "<div class='alert alert-info alert-dismissible'>" . $_GET['msg'] . "</div>";
+}
+
+?>
+
 <!-- Manage Category -->
-<div class="text-center text-secondary fs-5 pb-4">
+<div class="text-center text-secondary fs-5 pb-4 manage_category">
     <img src="./assets/images/manageIcon.png" alt="addIcon" class="justify-center">
     <strong>Manage Category</strong>
     <div class=" d-flex align-items-center justify-content-center flex-wrap">
@@ -163,24 +178,23 @@ $s_no = 1;
             //  print_r($data);
             //  Array ( [id] => 6 [category_name] => Dresses [thumbnail] => 9998221411.jpg [status] => Active [created_at] => 2024-07-05 12:48:31.743273 )
         ?>
-            <div class="card" style="width: 18rem; margin:4rem;">
+            <div class="card" style="width: 20rem; margin:4rem;">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $s_no ?></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><?php echo $data["category_name"] ?></h6>
                     <p class="card-img-top">
-                        <img src="category_images/<?php echo $data['thumbnail'] ?>" style="height:200px;width:200px;">
+                        <img src="category_images/<?php echo $data['thumbnail'] ?>" style="height:200px;width:250px;">
                     </p>
-                    <a href="category.php" class="btn btn-danger">
-                        <img src="./assets/images/deleteIcon.png" alt="">
+                    <a href="delete_category.php?id=<?php echo $data['id'] ?>" class="btn btn-danger">
+                        <img src="./assets/images/deleteIcon.png" alt="DeleteButton">
                     </a>
-                    <a href="category.php" class="btn btn-danger">
-                        <img src="./assets/images/editIcon.png" alt="">
+                    <a href="delete_category.php" class="btn btn-danger">
+                        <img src="./assets/images/editIcon.png" alt="EditButton">
                     </a>
                 </div>
             </div>
 
         <?php
-            // $sno=$sno+1;
             $s_no++;
         }
         ?>
