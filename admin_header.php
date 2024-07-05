@@ -82,10 +82,10 @@
                                         <a class="nav-link" href="admin_index.php">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="add_category.php">Manage Category</a>
+                                        <a class="nav-link" href="category.php">Manage Category</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="add_styles.php">Manage Styles</a>
+                                        <a class="nav-link" href="styles.php">Manage Styles</a>
                                     </li>
 
                                     <li class="nav-item">
