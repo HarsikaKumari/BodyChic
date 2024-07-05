@@ -2,6 +2,29 @@
 include("admin_header.php")
 ?>
 
+<style>
+    .form-container {
+        padding: 20px;
+        border: 1px solid red;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    .form-group label {
+        color: red;
+    }
+
+    .btn-outline-dark {
+        color: red;
+        border-color: red;
+    }
+
+    .btn-outline-dark:hover {
+        background-color: red;
+        color: white;
+    }
+</style>
+
 
 <div class="breadcrumb-contentnhy">
     <div class="container">
@@ -25,32 +48,24 @@ include("admin_header.php")
         <strong>Add Category</strong>
 
     </div>
-    <form action="add_category.php" method="post" enctype="multipart/form-data">
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Category Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control-plaintext" id="category" name="category" placeholder="Tops">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="thumbnail" class="col-sm-2 col-form-label">Thumbnail</label>
-            <div class="col-sm-10">
-                <input type="file" class="form-control-file" id="thumbnail" name="thumbnail">
-            </div>
-        </div>
-        <!-- <div class="form-group row">
-            <label for="status" class="col-sm-2 col-form-label">Select Status</label>
-            <div class="col-sm-10">
-                <select class="form-control col-sm-10" name="status">
-                    <option>Active</option>
-                    <option>NotActive</option>
-                </select>
-            </div>
-        </div> -->
 
-        <button type="submit" name="submit" class="btn btn-outline-dark">submit</button>
-
-    </form>
+    <div class="form-container">
+        <form action="category.php" method="post" enctype="multipart/form-data">
+            <div class="form-group row">
+                <label for="category" class="col-sm-2 col-form-label">Category Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext" id="category" name="category" placeholder="Tops">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="thumbnail" class="col-sm-2 col-form-label">Thumbnail</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control-file" id="thumbnail" name="thumbnail">
+                </div>
+            </div>
+            <button type="submit" name="submit" class="btn btn-outline-dark">Submit</button>
+        </form>
+    </div>
 </div>
 
 <?php
@@ -58,13 +73,13 @@ include("admin_header.php")
 if (isset($_POST["submit"])) {
     $category = $_POST["category"];
     $thumbnail = $_FILES["thumbnail"];
-    print_r($thumbnail);
+    // print_r($thumbnail);
 
     $thumbnail_name = $thumbnail["name"];
     $thumbnail_path = $thumbnail["tmp_name"];
-    $thumbnail_new_name = rand().$thumbnail_name;
+    $thumbnail_new_name = rand() . $thumbnail_name;
 
-    move_uploaded_file($thumbnail_path, "category_images/".$thumbnail_new_name);
+    move_uploaded_file($thumbnail_path, "category_images/" . $thumbnail_new_name);
 
     include("config.php");
 
