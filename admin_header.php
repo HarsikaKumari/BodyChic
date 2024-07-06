@@ -75,7 +75,7 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact.php">Colors</a>
+                                        <a class="nav-link" href="colors.php">Colors</a>
                                     </li>
 
                                     <!-- <ul class="top-hnt-right-content col-lg-6"> -->
