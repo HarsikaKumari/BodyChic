@@ -67,7 +67,6 @@ include("admin_header.php")
         </nav>
     </div>
 </div>
-</div>
 </section>
 
 <!-- Form for add category -->
@@ -152,7 +151,6 @@ if (isset($_GET["msg"])) {
         </button>
     </div>
 <?php
-    // echo "<div class='alert alert-info alert-dismissible'>" . $_GET['msg'] . "</div>";
 }
 
 ?>
@@ -188,7 +186,7 @@ if (isset($_GET["msg"])) {
                     <a href="delete_category.php?id=<?php echo $data['id'] ?>" class="btn btn-danger">
                         <img src="./assets/images/deleteIcon.png" alt="DeleteButton">
                     </a>
-                    <a href="delete_category.php" class="btn btn-danger">
+                    <a href="edit_category.php" class="btn btn-danger">
                         <img src="./assets/images/editIcon.png" alt="EditButton">
                     </a>
                 </div>
