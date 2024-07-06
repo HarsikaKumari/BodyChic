@@ -92,7 +92,7 @@ include("admin_header.php")
                     <input type="file" class="form-control-file" id="thumbnail" name="thumbnail">
                 </div>
             </div>
-            <button type="submit" name="submit" class="btn btn-outline-dark">Submit</button>
+            <button type="submit" name="submit" class="btn btn-outline-dark">Add</button>
         </form>
     </div>
 </div>
@@ -186,7 +186,7 @@ if (isset($_GET["msg"])) {
                     <a href="delete_category.php?id=<?php echo $data['id'] ?>" class="btn btn-danger">
                         <img src="./assets/images/deleteIcon.png" alt="DeleteButton">
                     </a>
-                    <a href="edit_category.php" class="btn btn-danger">
+                    <a href="edit_category.php" class="btn btn-primary">
                         <img src="./assets/images/editIcon.png" alt="EditButton">
                     </a>
                 </div>
