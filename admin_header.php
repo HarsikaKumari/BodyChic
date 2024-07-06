@@ -24,17 +24,7 @@
                 <header class="tophny-header">
                     <div class="container-fluid">
                         <div class="top-right-strip row">
-                            <!--/right-->
-                            <ul class="top-hnt-right-content col-lg-6">
 
-                                <li class="button-log usernhy">
-                                    <a class="btn-open d-flex justify-content-center pe-4" href="#">
-                                        <span class="fa fa-user" aria-hidden="true"></span>
-                                        <span class="" aria-hidden="true">Login</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!--//right-->
                             <div class="overlay-login text-left">
                                 <button type="button" class="overlay-close1">
                                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -52,11 +42,6 @@
                                 Body<span class="lohny">C</span>hic</a>
                             <div class="search-right">
 
-                                <a href="#search" title="search"><span class="fa fa-search mr-2" aria-hidden="true"></span>
-                                    <span class="search-text">Search here</span></a>
-                                <!-- search popup -->
-
-
                                 <div id="search" class="pop-overlay">
                                     <div class="popup">
 
@@ -69,7 +54,8 @@
 
                                     <a class="close" href="#">×</a>
                                 </div>
-                                <!-- /search popup -->
+                                <ul class="top-hnt-right-content col-lg-6">
+
                             </div>
                             <!--//search-right-->
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,15 +68,26 @@
                                         <a class="nav-link" href="admin_index.php">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="category.php">Manage Category</a>
+                                        <a class="nav-link" href="category.php">Category</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="styles.php">Manage Styles</a>
+                                        <a class="nav-link" href="styles.php">Styles</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact.php">Manage Colors</a>
+                                        <a class="nav-link" href="contact.php">Colors</a>
                                     </li>
+
+                                    <!-- <ul class="top-hnt-right-content col-lg-6"> -->
+
+                                    <li class="nav-item button-log usernhy">
+                                        <a class="nav-link btn-open d-flex justify-content-center pe-4" href="./index.php">
+                                            <span class="fa fa-user" aria-hidden="true"></span>
+                                            <span class="" aria-hidden="true">Logout</span>
+                                        </a>
+                                    </li>
+                                    <!-- </ul> -->
+
                                 </ul>
 
                             </div>
