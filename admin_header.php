@@ -68,14 +68,38 @@
                                         <a class="nav-link" href="admin_index.php">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="category.php">Category</a>
+                                        <div class="dropdown nav-link">
+                                            <span class="text-white dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Category
+                                            </span>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="./add_category.php">Add Category</a>
+                                                <a class="dropdown-item" href="./manage_category.php">Manage Category</a>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="styles.php">Styles</a>
+                                        <div class="dropdown nav-link">
+                                            <span class="text-white dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Style
+                                            </span>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="./add_style.php">Add Style</a>
+                                                <a class="dropdown-item" href="./manage_style.php">Manage Style</a>
+                                            </div>
+                                        </div>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="colors.php">Colors</a>
+                                        <div class="dropdown nav-link">
+                                            <span class="text-white dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Color
+                                            </span>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="./add_color.php">Add Color</a>
+                                                <a class="dropdown-item" href="./manage_color.php">Manage Color</a>
+                                            </div>
+                                        </div>
                                     </li>
 
                                     <!-- <ul class="top-hnt-right-content col-lg-6"> -->
