@@ -8,7 +8,7 @@ $query = "DELETE FROM `styles` WHERE `id` = '$id'";
 $result = mysqli_query($connect, $query);
 
 if ($result) {
-    echo "<script>window.location.assign('styles.php?msg=Style deleted successfully')</script>";
+    echo "<script>window.location.assign('manage_style.php?msg=Style deleted successfully')</script>";
 } else {
-    echo "<script>window.location.assign('styles.php?msg=Try again later')</script>";
+    echo "<script>window.location.assign('manage_style.php?msg=Try again later')</script>";
 }
