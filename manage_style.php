@@ -83,12 +83,12 @@ if (isset($_GET["msg"])) {
                         <td><?php echo $data['gender'] ?></td>
                         <td><?php echo $data['category'] ?></td>
                         <td>
-                            <a href="delete_style.php?id=<?php echo $data['id'] ?>" class="btn btn-danger">
+                            <a href="delete_style.php?id=<?php echo $data['id']?>" class="btn btn-danger">
                                 <img src="./assets/images/deleteIcon.png" alt="DeleteButton">
                             </a>
                         </td>
                         <td>
-                            <a href="edit_style.php" class="btn btn-primary">
+                            <a href="edit_style.php?id=<?php echo $data['id']?>" class="btn btn-primary">
                                 <img src="./assets/images/editIcon.png" alt="EditButton">
                             </a>
 
@@ -103,27 +103,6 @@ if (isset($_GET["msg"])) {
 
             </table>
         </div>
-
-        <?php
-        //1. database connect
-        include("config.php");
-        //2. query
-        //SELECT * from `table`
-        $query = "SELECT * from `styles`";
-        //3. query run with database
-        $result = mysqli_query($connect, $query);
-        //4. result use
-        // print_r($result);
-        $sno = 1;
-        while ($data = mysqli_fetch_assoc($result)) {
-            //  print_r($data);
-            //  Array ( [id] => 6 [category_name] => Dresses [thumbnail] => 9998221411.jpg [status] => Active [created_at] => 2024-07-05 12:48:31.743273 )
-        ?>
-
-        <?php
-            $s_no++;
-        }
-        ?>
     </div>
 </div>
 
