@@ -20,7 +20,7 @@ include("admin_header.php")
 </section>
 
 <?php
-$id = $_GET["id"];
+$id = $_GET['id'];
 // database connect
 include("config.php");
 //query
@@ -60,7 +60,7 @@ $data = mysqli_fetch_assoc($result);
         }
         ?>
 
-        <form action="category.php" method="post" enctype="multipart/form-data">
+        <form action="edit_category.php" method="post" enctype="multipart/form-data">
             <div class="form-group row">
                 <label for="category" class="col-sm-4 col-form-label">Category Name</label>
                 <div class="col-sm-8">
@@ -77,7 +77,6 @@ $data = mysqli_fetch_assoc($result);
         </form>
     </div>
 </div>
-
 
 <?php
 if (isset($_REQUEST["submit_btn"])) {
@@ -105,9 +104,6 @@ if (isset($_REQUEST["submit_btn"])) {
     }
 }
 ?>
-
-
-
 
 <?php
 include("footer.php");
