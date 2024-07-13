@@ -10,8 +10,7 @@
                                     <a class="navbar-brand" href="#index.php">
                                         <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
                                     </a> -->
-                    <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio consectetur.Vivamus
-                        a ligula quam. Ut blandit eu leo non suscipit. </p>
+                    <p>When it comes to fashion, visuals are key. BodyChic is an all-inclusive Website aimed at all sizes, ages, ethnicities, genders, and sexual orientations.</p>
                     <ul class="social-footerhny mt-lg-5 mt-4">
 
                         <li><a class="facebook" href="#"><span class="fa fa-facebook" aria-hidden="true"></span></a>
