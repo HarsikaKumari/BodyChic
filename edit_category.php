@@ -60,7 +60,7 @@ $data = mysqli_fetch_assoc($result);
         }
         ?>
 
-        <form action="edit_category.php" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group row">
                 <label for="category" class="col-sm-4 col-form-label">Category Name</label>
                 <div class="col-sm-8">
@@ -79,25 +79,26 @@ $data = mysqli_fetch_assoc($result);
 </div>
 
 <?php
-if (isset($_REQUEST["submit_btn"])) {
-    $category_name = $_REQUEST["category_name"];
-    // echo $category_name;
-    if ($_FILES["image"]["name"]) {
-        $image = $_FILES["image"];
-        $image_name = $image["name"];
-        $tmp_path = $image["tmp_name"];
-        $new_name = rand() . $image_name;
-        move_uploaded_file($tmp_path, "images/" . $new_name);
+if (isset($_REQUEST["submit"])) {
+    $category_name = $_REQUEST["category"];
+    
+    if ($_FILES["thumbnail"]["name"]) {
+        $thumbnail = $_FILES["thumbnail"];
+        $thumbnail_name = $thumbnail["name"];
+        $tmp_path = $thumbnail["tmp_name"];
+        $new_name = rand() . $thumbnail_name;
+        move_uploaded_file($tmp_path, "thumbnails/" . $new_name);
     } else {
-        // $new_name=$_REQUEST["previous_image"];
-        $new_name = $data["image"];
+        // $new_name=$_REQUEST["previous_thumbnail"];
+        $new_name = $data["thumbnail"];
         //previous data
     }
     include("config.php");
     //UPDATE `table` set `col`='val' where `id`='val'
-    $query = "UPDATE `category` set `category_name`='$category_name', `image`='$new_name' where `id`='$id'";
+    $query = "UPDATE `category` set `category_name`='$category_name', `thumbnail`='$new_name' where `id`='$id'";
     $result = mysqli_query($connect, $query);
-    if ($result > 0) {
+
+    if ($result) {
         echo "<script>window.location.assign('manage_category.php?msg=Updated successfully')</script>";
     } else {
         echo "<script>window.location.assign('manage_category.php?msg=Error!!! Try again later')</script>";

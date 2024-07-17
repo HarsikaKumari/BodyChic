@@ -65,11 +65,11 @@ if (isset($_GET["msg"])) {
                     <p class="card-img-top">
                         <img src="category_images/<?php echo $data['thumbnail'] ?>" style="height:200px;width:250px;">
                     </p>
-                    <a href="delete_category.php?id=<?php echo $data['id'] ?>" class="btn btn-danger">
-                        <img src="./assets/images/deleteIcon.png" alt="DeleteButton">
-                    </a>
                     <a href="edit_category.php?id=<?php echo $data['id'] ?>" class=" btn btn-primary">
                         <img src="./assets/images/editIcon.png" alt="EditButton">
+                    </a>
+                    <a href="delete_category.php?id=<?php echo $data['id'] ?>" class="btn btn-danger">
+                        <img src="./assets/images/deleteIcon.png" alt="DeleteButton">
                     </a>
                 </div>
             </div>
