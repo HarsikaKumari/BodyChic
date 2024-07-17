@@ -76,10 +76,10 @@ include("admin_header.php")
 
         <div class="header-container">
             <img src="./assets/images/addIcon.png" alt="addIcon">
-            <strong>Add Category</strong>
+            <strong>Add Color</strong>
         </div>
 
-        <form action="colors.php" method="post" enctype="multipart/form-data">
+        <form action="add_color.php" method="post" enctype="multipart/form-data">
             <div class="form-group row">
                 <label for="name" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
@@ -166,7 +166,6 @@ if (isset($_GET["msg"])) {
     </div>
 <?php
 }
-
 ?>
 
 <?php
