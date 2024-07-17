@@ -19,8 +19,10 @@ include("admin_header.php")
 </div>
 </section>
 
+<!-- Accessing data from styles -->
+ 
 <?php
-$id = $_REQUEST['id'];
+$id = $_GET['id'];
 // database connect
 include("config.php");
 //query
@@ -62,7 +64,7 @@ $data = mysqli_fetch_assoc($result);
             }
             ?>
 
-            <form action="edit_style.php" method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                     <label for="name" class="col-sm-4 col-form-label">Name</label>
                     <div class="col-sm-8">
@@ -103,43 +105,43 @@ $data = mysqli_fetch_assoc($result);
             </form>
         </div>
     </div>
+</div>
 
-    <?php
+<?php
 
-    if (isset($_REQUEST["submit"])) {
-        $name = $_REQUEST["name"];
-        $bodytype = $_REQUEST["bodytype"];
-        $gender = $_REQUEST["gender"];
-        $category = $_REQUEST["category"];
-        $details = $_REQUEST["details"];
-        // echo $name;
-        if ($_FILES["image"]["name"]) {
-            $image = $_FILES["image"];
-            $image_name = $image["name"];
-            $tmp_path = $image["tmp_name"];
-            $new_name = rand() . $image_name;
-            move_uploaded_file($tmp_path, "style_images/" . $new_name);
-        } else {
-            // $new_name=$_REQUEST["previous_image"];
-            $new_name = $data["image"];
-            //previous data
-        }
-        include("config.php");
-
-        //UPDATE `table` set `col`='val' where `id`='val'
-        $query = "UPDATE `styles` SET `name`='$name',`bodytype`='$bodytype',`category`='$category',`gender`='$gender', `details`='$details',`image`='$new_name' WHERE `id`='$id'";
-
-        $result = mysqli_query($connect, $query);
-
-        if ($result) {
-            echo "<script>window.location.assign('manage_style.php?msg=Updated successfully')</script>";
-        } else {
-            echo "<script>window.location.assign('manage_style.php?msg=Error!!! Try again later')</script>";
-        }
+if (isset($_REQUEST["submit"])) {
+    $name = $_REQUEST["name"];
+    $bodytype = $_REQUEST["bodytype"];
+    $gender = $_REQUEST["gender"];
+    $category = $_REQUEST["category"];
+    $details = $_REQUEST["details"];
+    // echo $name;
+    if ($_FILES["image"]["name"]) {
+        $image = $_FILES["image"];
+        $image_name = $image["name"];
+        $tmp_path = $image["tmp_name"];
+        $new_name = rand() . $image_name;
+        move_uploaded_file($tmp_path, "style_images/" . $new_name);
+    } else {
+        // $new_name=$_REQUEST["previous_image"];
+        $new_name = $data["image"];
+        //previous data
     }
-    ?>
+    include("config.php");
+
+    //UPDATE `table` set `col`='val' where `id`='val'
+    $query = "UPDATE `styles` SET `name`='$name',`bodytype`='$bodytype',`category`='$category',`gender`='$gender', `details`='$details',`image`='$new_name' WHERE `id`='$id'";
+
+    $result = mysqli_query($connect, $query);
+    if ($result) {
+        echo "<script>window.location.assign('manage_style.php?msg=Updated successfully')</script>";
+    } else {
+        echo "<script>window.location.assign('manage_style.php?msg=Error!!! Try again later')</script>";
+    }
+}
+?>
 
 
-    <?php
-    include("footer.php");
-    ?>
+<?php
+include("footer.php");
+?>

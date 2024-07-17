@@ -54,8 +54,8 @@ if (isset($_GET["msg"])) {
                     <th>Body Type</th>
                     <th>Gender</th>
                     <th>Category</th>
-                    <th>Delete</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 <?php
                 //1. database connect
@@ -83,15 +83,14 @@ if (isset($_GET["msg"])) {
                         <td><?php echo $data['gender'] ?></td>
                         <td><?php echo $data['category'] ?></td>
                         <td>
-                            <a href="delete_style.php?id=<?php echo $data['id']?>" class="btn btn-danger">
-                                <img src="./assets/images/deleteIcon.png" alt="DeleteButton">
+                            <a href="edit_style.php?id=<?php echo $data['id'] ?>" class="btn btn-primary">
+                                <img src="./assets/images/editIcon.png" alt="EditButton">
                             </a>
                         </td>
                         <td>
-                            <a href="edit_style.php?id=<?php echo $data['id']?>" class="btn btn-primary">
-                                <img src="./assets/images/editIcon.png" alt="EditButton">
+                            <a href="delete_style.php?id=<?php echo $data['id'] ?>" class="btn btn-danger">
+                                <img src="./assets/images/deleteIcon.png" alt="DeleteButton">
                             </a>
-
                         </td>
                     </tr>
 
