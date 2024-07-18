@@ -1,5 +1,9 @@
 <?php
-include("admin_header.php")
+include("admin_header.php");
+//session check
+if (!isset($_SESSION["email"])) {
+    echo "<script>window.location.assign('admin_login.php?msg=Please Login.')</script>";
+}
 ?>
 
 <!-- form Styling -->

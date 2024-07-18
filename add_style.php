@@ -1,5 +1,9 @@
 <?php
-include("admin_header.php")
+include("admin_header.php");
+//session check
+if (!isset($_SESSION["email"])) {
+    echo "<script>window.location.assign('admin_login.php?msg=Please Login.')</script>";
+}
 ?>
 
 
@@ -105,12 +109,26 @@ include("admin_header.php")
                     <input type="text" class="form-control" id="gender" name="gender" placeholder="Eg: Female">
                 </div>
             </div>
+
             <div class="form-group row">
                 <label for="category" class="col-sm-4 col-form-label">Category</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="category" name="category" placeholder="Eg: Tops">
+                    <select class="col-sm-4 p-2 form-control-file" name="category">
+                        <option>Choose Category</option>
+                        <?php
+                        include("config.php");
+                        $query = "SELECT * from `category`";
+                        $result = mysqli_query($connect, $query);
+                        while ($data = mysqli_fetch_assoc($result)) {
+                        ?>
+                            <option value="<?php echo $data['id'] ?>"><?php echo $data['category_name'] ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
+
             <div class="form-group row">
                 <label for="details" class="col-sm-4 col-form-label">Details</label>
                 <div class="col-sm-8">
