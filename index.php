@@ -24,26 +24,6 @@
 				<div class="container-fluid">
 					<div class="top-right-strip row">
 
-						<!--/right-->
-						<ul class="top-hnt-right-content col-lg-12">
-
-							<li class="button-log usernhy">
-								<a class="btn-open" href="#">
-									<span class="fa fa-user" aria-hidden="true"></span> Login
-								</a>
-							</li>
-							<!-- <li class="transmitvcart galssescart2 cart cart box_1">
-								<form action="#" method="post" class="last">
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="display" value="1">
-									<button class="top_transmitv_cart" type="submit" name="submit" value="">
-										My Cart
-										<span class="fa fa-shopping-cart"></span>
-									</button>
-								</form>
-							</li> -->
-						</ul>
-						<!--//right-->
 						<div class="overlay-login text-left">
 							<button type="button" class="overlay-close1">
 								<i class="fa fa-times" aria-hidden="true"></i>
@@ -58,44 +38,31 @@
 				<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container-fluid serarc-fluid">
 						<a class="navbar-brand" href="index.php">
-							Body<span class="lohny">C</span>hic</a>
-						<!-- if logo is image enable this   
-							<a class="navbar-brand" href="#index.php">
-								<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-							</a> -->
-						<!--/search-right-->
+							Body<span class="lohny">C</span>hic
+						</a>
 						<div class="search-right">
-
-							<a href="#search" title="search"><span class="fa fa-search mr-2" aria-hidden="true"></span>
-								<span class="search-text">Search here</span></a>
-							<!-- search popup -->
-							<div id="search" class="pop-overlay">
-								<div class="popup">
-
-									<form action="#" method="post" class="search-box">
-										<input type="search" placeholder="Keyword" name="search" required="required" autofocus="">
-										<button type="submit" class="btn">Search</button>
-									</form>
-
-								</div>
-								<a class="close" href="#">×</a>
-							</div>
-
+							<span class="navbar-brand navbar-expand-lg navbar-light button-log usernhy">
+								<a class="btn-open" href="#">
+									<span class="fa fa-user" aria-hidden="true"></span> Login
+								</a>
+							</span>
 						</div>
-						<!--//search-right-->
+
+						<!--//login-right-->
+
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon fa fa-bars"> </span>
 						</button>
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto">
-								<li class="nav-item active">
+								<li class="nav-item">
 									<a class="nav-link" href="index.php">Home</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="about.php">About</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="about.php">What We Offer</a>
+									<a class="nav-link" href="styles.php">Styles</a>
 								</li>
 
 
@@ -108,8 +75,8 @@
 					</div>
 				</nav>
 				<!--//nav-->
+
 			</header>
-			<!-- <div class="bannerhny-content"> -->
 
 			<!--/banner-slider-->
 			<div class="content-baner-inf">
