@@ -70,11 +70,11 @@
                     <ul class="jst-link">
                         <li><a href="#">Privacy Policy </a> </li>
                         <li><a href="#">Term of Service</a></li>
-                        <li><a href="contact.php">Customer Care</a> </li>
+                        <li><a>Customer Care: 7884578837</a> </li>
                     </ul>
                 </div>
                 <div class="columns col-lg-6 text-lg-right">
-                    <p>© 2024 BodyChic. All rights reserved. Design by <a href="https://w3layouts.com/" target="_blank">
+                    <p>© 2024 BodyChic. All rights reserved. Design by <a href="https://www.linkedin.com/in/harsika-kumari/">
                             Harsika kumari</a>
                     </p>
                 </div>
