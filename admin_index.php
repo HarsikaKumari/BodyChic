@@ -1,5 +1,8 @@
 <?php
-include("admin_header.php")
+include("admin_header.php");
+//session check
+include("session_check.php");
+
 ?>
 
 
@@ -18,6 +21,10 @@ include("admin_header.php")
 </div>
 </div>
 </section>
+
+<h1>Welcome admin</h1>
+<p><?php echo $_SESSION["email"] ?></p>
+<p><?php echo $_SESSION["name"] ?></p>
 
 <?php
 include("footer.php");
