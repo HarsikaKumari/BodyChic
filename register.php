@@ -193,7 +193,6 @@ session_start();
             $_SESSION["email"] = $email;
             $_SESSION["user_type"] = "user";
             $_SESSION["name"] = $data["name"];
-            // $_SESSION["user_id"] = $data["id"];
 
             echo "<script>window.location.assign('body_info.php?msg=Registered Successfully! Fill out this information for more clarifications&email=$data[email]')</script>";
         } else {
