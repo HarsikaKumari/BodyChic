@@ -30,7 +30,15 @@ include("session_check.php")
         include("config.php");
         //2. query
         //SELECT * from `table`
-        $query = "SELECT * from `styles`";
+        $bodyType = $_SESSION["bodyType"];
+
+        if(isset($_GET['category'])){
+
+            $query = "SELECT * from `styles` where `bodytype`='$bodyType' OR `bodytype` = 'All' and `category`='$_GET[category]'";
+                } else {
+            $query = "SELECT * from `styles` where `bodytype`='$bodyType' OR `bodytype` = 'All' ";
+            } 
+
         //3. query run with database
         $result = mysqli_query($connect, $query);
         //4. result use
