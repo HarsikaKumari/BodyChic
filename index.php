@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+// Display any messages if set
+if (isset($_GET["msg"])) {
+?>
+	<div class="alert alert-warning alert-dismissible fade show m-0" role="alert">
+		<strong><?php echo $_GET['msg'] ?></strong>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+<?php
+}
+?>
+
 <!doctype html>
 <html lang="zxx">
 
@@ -40,14 +56,6 @@
 						<a class="navbar-brand" href="index.php">
 							Body<span class="lohny">C</span>hic
 						</a>
-						<div class="search-right">
-							<span class="navbar-brand navbar-expand-lg navbar-light button-log usernhy">
-								<a class="btn-open" href="#">
-									<span class="fa fa-user" aria-hidden="true"></span> Login
-								</a>
-							</span>
-						</div>
-
 						<!--//login-right-->
 
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,15 +67,28 @@
 									<a class="nav-link" href="index.php">Home</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="about.php">About</a>
+									<a class="nav-link" href="category.php">Category</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="styles.php">Styles</a>
 								</li>
-
-
 								<li class="nav-item">
-									<a class="nav-link" href="contact.php">Contact</a>
+									<a class="nav-link" href="color.php">Colors</a>
+								</li>
+								<li class="nav-item">
+									<span class="navbar-brand navbar-expand-lg navbar-light button-log usernhy">
+
+										<?php if (isset($_SESSION['email'])) { ?>
+											<a class="nav-link btn-open" href="logout.php">
+												<span class="fa fa-user" aria-hidden="true"></span> Logout
+											</a>
+										<?php } else { ?>
+											<a class="nav-link btn-open" href="#">
+												<span class="fa fa-user" aria-hidden="true"></span> Login
+											</a>
+										<?php } ?>
+
+									</span>
 								</li>
 							</ul>
 
@@ -161,7 +182,7 @@
 		<div class="grids-hny-2-mian py-5">
 			<div class="container py-lg-5">
 
-				<h3 class="hny-title mb-0 text-center">Shop With <span>Us</span></h3>
+				<h3 class="hny-title mb-0 text-center">Let's Explore <span>Styles</span></h3>
 				<p class="mb-4 text-center">Handpicked Favourites just for you</p>
 
 				<div class="welcome-grids row mt-5">
@@ -201,14 +222,14 @@
 
 					<div class="col-lg-2 col-md-4 col-6 welcome-image">
 						<div class="boxhny13">
-							<a href="#URL">
+							<a href="styles.php">
 								<img src="assets/images/grid3.jpg" class="img-fluid" alt="" />
 								<div class="boxhny-content">
 									<h3 class="title">More</h3>
 								</div>
 							</a>
 						</div>
-						<h4><a>Explore More &rarr;</a></h4>
+						<h4><a href="styles.php">Explore More &rarr;</a></h4>
 					</div>
 				</div>
 

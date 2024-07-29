@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="zxx">
 
@@ -5,7 +9,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BodyChic Your Own Designer</title>
+    <title>BodyChic - Your Own Designer</title>
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
     <!-- Template CSS -->
@@ -63,8 +67,18 @@
                                     <!-- <ul class="top-hnt-right-content col-lg-6"> -->
 
                                     <li class="nav-item button-log ">
-                                        <a class="nav-link " href="#">
-                                            <span class="fa fa-user" aria-hidden="true"></span> Login
+                                        <a class="" href="#">
+
+                                                <?php if (isset($_SESSION['email'])) { ?>
+                                                    <a class="nav-link btn-open" href="logout.php">
+                                                        <span class="fa fa-user" aria-hidden="true"></span>Logout
+                                                    </a>
+                                                <?php } else { ?>
+                                                    <a class="nav-link btn-open" href="#">
+                                                        <span class="fa fa-user" aria-hidden="true"></span>Login
+                                                    </a>
+                                                <?php } ?>
+                                                
                                         </a>
                                     </li>
                                     <!-- </ul> -->

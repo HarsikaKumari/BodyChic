@@ -6,7 +6,7 @@ include("session_check.php")
 <div class="breadcrumb-contentnhy">
   <div class="container">
     <nav aria-label="breadcrumb">
-      <h2 class="hny-title text-center">color Us</h2>
+      <h2 class="hny-title text-center">Color Us</h2>
       <ol class="breadcrumb mb-0">
         <li><a href="index.php">Home</a>
           <span class="fa fa-angle-double-right"></span>

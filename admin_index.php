@@ -21,10 +21,11 @@ include("session_check.php");
 </div>
 </div>
 </section>
-
-<h1>Welcome admin</h1>
-<p><?php echo $_SESSION["email"] ?></p>
-<p><?php echo $_SESSION["name"] ?></p>
+<center>
+    <h1>Welcome admin</h1>
+    <p><?php echo $_SESSION["email"] ?></p>
+    <p><?php echo $_SESSION["name"] ?></p>
+</center>
 
 <?php
 include("footer.php");

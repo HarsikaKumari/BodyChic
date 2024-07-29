@@ -239,7 +239,7 @@ include("session_check.php")
                 echo "<div class='result-display'>";
                 echo "<h3>Your Body Type: $bodyType</h3>";
                 echo "<p>Color Tone: $colorToneName</p>";
-                echo "<button class='btn-explore' onclick='window.location.href='index.php'>Explore More Styles</button>";
+                echo "<button class='btn-explore' onclick=\"window.location.href='styles.php'\">Explore More Styles</button>";
                 echo "</div>";
 
 
@@ -247,10 +247,11 @@ include("session_check.php")
 
                 $email = $_GET["email"];
 
-                $query = "UPDATE `users` SET `bust_size` = `$bustSize`, `waist_size` = `$waistSize`, `high_hip_size` = `$highHipSize`, `body_shape` = `$bodyType`, `hip_size` = `$hipSize` WHERE `email` = `$email`";
+                $query = "UPDATE `users` SET `bust_size` = '$bustSize', `waist_size` = '$waistSize', `high_hip_size` = '$highHipSize', `body_shape` = '$bodyType', `hip_size` = '$hipSize' WHERE `email` = '$email'";
 
                 $result = mysqli_query($connect, $query);
                 if ($result) {
+                    $_SESSION["bodyType"] = $bodyType;
             ?>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>Information Added Successfully</strong>
