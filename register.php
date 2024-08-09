@@ -92,8 +92,13 @@ session_start();
         }
 
         .form_back {
-            background: url('./assets/images/register_form_image.jpg') no-repeat center center;
+            background: url('./assets/images/registerBgImage.avif') no-repeat center center;
             background-size: cover;
+        }
+
+        #name_error,
+        #contact_error {
+            color: red;
         }
     </style>
 
@@ -122,20 +127,6 @@ session_start();
                 </div>
     </section>
 
-    <?php
-    if (isset($_GET["msg"])) {
-    ?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong><?php echo $_GET['msg'] ?></strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php
-    }
-
-    ?>
-
     <div class="form_back">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -146,10 +137,10 @@ session_start();
                     }
                     ?>
                     <h5 class="text-center mb-4">User Registration</h5>
-                    <form method="post">
+                    <form method="post" onsubmit="return checkForm()">
 
                         <div class="form-group">
-                            <input type="text" class="form-control" name="name" placeholder="Full Name" required="">
+                            <input type="text" id="name" class="form-control" name="name" placeholder="Full Name" required="">
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" placeholder="Email" required="">
@@ -158,7 +149,12 @@ session_start();
                             <input type="password" class="form-control" name="password" placeholder="Password" required="">
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control" name="contact" placeholder="contact" required="">
+                            <input type="tel" id="contact" class="form-control" name="contact" placeholder="contact" required="">
+                        </div>
+                        <div class="form-group border border-primary ps-sm-3 rounded-pill" style="background-color: white;">
+                            <label for="gender" class="col-2 col-form-label">Gender</label>
+                            <input type="radio" id="gender" name="gender" value="Male" placeholder="Eg: Female">Male
+                            <input type="radio" id="gender" name="gender" placeholder="Eg: Female" value="Female">Female
                         </div>
 
                         <div class="text-center">
@@ -178,25 +174,28 @@ session_start();
         $email = $_POST["email"];
         $password = md5($_POST["password"]);
         $contact = $_POST["contact"];
-
+        $gender = $_POST["gender"];
         include("config.php");
-
-        $query = "INSERT INTO `users`(`name`, `email`, `password`, `contact`) VALUES('$name', '$email', '$password', '$contact') ";
-        $result = mysqli_query($connect, $query);
-
-        $query = "SELECT * FROM `users`";
-        $result = mysqli_query($connect, $query);
-
-        if ($result) {
-            $data = mysqli_fetch_assoc($result);
-            //session create
-            $_SESSION["email"] = $email;
-            $_SESSION["user_type"] = "user";
-            $_SESSION["name"] = $data["name"];
-
-            echo "<script>window.location.assign('body_info.php?msg=Registered Successfully! Fill out this information for more clarifications&email=$data[email]')</script>";
+        $que = "SELECT * from `users` where `email`='$email'";
+        $res = mysqli_query($connect, $que);
+        if (mysqli_num_rows($res) <= 0) {
+            $query = "INSERT INTO `users`(`name`, `email`, `password`, `contact`,`gender`) VALUES('$name', '$email', '$password', '$contact','$gender')";
+            $result = mysqli_query($connect, $query);
+            if ($result > 0) {
+                $query1 = "SELECT * FROM `users` where `email`='$email'";
+                $result1 = mysqli_query($connect, $query1);
+                $data = mysqli_fetch_assoc($result1);
+                //session create
+                $_SESSION["email"] = $email;
+                $_SESSION["user_type"] = "user";
+                $_SESSION["name"] = $data["name"];
+                $_SESSION["gender"] = $data["gender"];
+                echo "<script>window.location.assign('body_info.php?msg=Registered Successfully! Fill out this information for more clarifications&email=$data[email]')</script>";
+            } else {
+                echo "<script>window.location.assign('register.php?msg=Not Registered, try again after few times!')</script>";
+            }
         } else {
-            echo "<script>window.location.assign('register.php?msg=Not Registered, try again after few times!')</script>";
+            echo "<script>window.location.assign('register.php?msg=Email already in use!')</script>";
         }
     }
     ?>
@@ -205,11 +204,9 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-</html>
 
 
-<?php
-include("footer.php")
-?>
+
+    <?php
+    include("footer.php")
+    ?>
