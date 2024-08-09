@@ -62,12 +62,12 @@ if (!isset($_SESSION["email"])) {
 <div class="breadcrumb-contentnhy">
     <div class="container">
         <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Admin</h2>
+            <h2 class="hny-title text-center">Style</h2>
             <ol class="breadcrumb mb-0">
                 <li><a href="index.php">Home</a>
                     <span class="fa fa-angle-double-right"></span>
                 </li>
-                <li class="active">Admin</li>
+                <li class="active">Style</li>
             </ol>
         </nav>
     </div>
@@ -78,7 +78,18 @@ if (!isset($_SESSION["email"])) {
 <div class="p-4 form_div">
 
     <div class="form-container">
-
+        <?php
+        if (isset($_GET['msg'])) {
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?php echo $_GET['msg'] ?></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+        ?>
         <div class="header-container">
             <img src="./assets/images/addIcon.png" alt="addIcon">
             <strong>Add Styles</strong>
@@ -100,20 +111,24 @@ if (!isset($_SESSION["email"])) {
             <div class="form-group row">
                 <label for="body_type" class="col-sm-4 col-form-label">BodyType</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="body_type" name="body_type" placeholder="Eg: Hourglass">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="gender" class="col-sm-4 col-form-label">Gender</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="gender" name="gender" placeholder="Eg: Female">
+                    <select type="text" class="form-control" id="body_type" name="body_type" placeholder="Eg: Hourglass">
+                        <option value="" selected disabled>Choose BodyType</option>
+                        <?php
+                        $arr = ["Hourglass", "Rectangular", "Pear", "Apple", "Inverted", "Triangle", "Oval"];
+                        foreach ($arr as $a) {
+                        ?>
+                            <option><?php echo $a ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="category" class="col-sm-4 col-form-label">Category</label>
                 <div class="col-sm-8">
-                    <select class="col-sm-4 p-2 form-control-file" name="category">
+                    <select class=" p-2 form-control" name="category">
                         <option>Choose Category</option>
                         <?php
                         include("config.php");
@@ -135,7 +150,7 @@ if (!isset($_SESSION["email"])) {
                     <input type="text" class="form-control" id="details" name="details" placeholder="Eg: Indian Wear for family functions">
                 </div>
             </div>
-            <button type="submit" name="submit" class="btn btn-outline-dark">Add</button>
+            <button type="submit" name="submit" class="btn btn-outline-dark">Save</button>
         </form>
     </div>
 </div>
@@ -147,7 +162,6 @@ if (isset($_POST["submit"])) {
     $name = $_POST["name"];
     $image = $_FILES["image"];
     $body_type = $_POST["body_type"];
-    $gender = $_POST["gender"];
     $category = $_POST["category"];
     $details = $_POST["details"];
     // print_r($thumbnail);
@@ -160,28 +174,13 @@ if (isset($_POST["submit"])) {
 
     include("config.php");
 
-    $query = "INSERT INTO `styles`(`name`, `image`, `bodytype`, `gender`, `category`, `details`) VALUES('$name', '$image_new_name','$body_type', '$gender', '$category', '$details' ) ";
+    $query = "INSERT INTO `styles`(`name`, `image`, `bodytype`, `category`, `details`) VALUES('$name', '$image_new_name','$body_type', '$category', '$details' ) ";
 
     $result = mysqli_query($connect, $query);
-
-    if ($result) {
-?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Style Added</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php
+    if ($result > 0) {
+        echo "<script>window.location.assign('add_style.php?msg=Style Added!!')</script>";
     } else {
-    ?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Style Not Added Try Again Later!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-<?php
+        echo "<script>window.location.assign('add_style.php?msg=Error while adding!!')</script>";
     }
 }
 ?>

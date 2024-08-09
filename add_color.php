@@ -61,12 +61,12 @@ if (!isset($_SESSION["email"])) {
 <div class="breadcrumb-contentnhy">
     <div class="container">
         <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Admin</h2>
+            <h2 class="hny-title text-center">Color</h2>
             <ol class="breadcrumb mb-0">
                 <li><a href="index.php">Home</a>
                     <span class="fa fa-angle-double-right"></span>
                 </li>
-                <li class="active">Admin</li>
+                <li class="active">Color</li>
             </ol>
         </nav>
     </div>
@@ -77,7 +77,18 @@ if (!isset($_SESSION["email"])) {
 <div class="p-4 form_div">
 
     <div class="form-container">
-
+        <?php
+        if (isset($_GET['msg'])) {
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?php echo $_GET['msg'] ?></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+        ?>
         <div class="header-container">
             <img src="./assets/images/addIcon.png" alt="addIcon">
             <strong>Add Color</strong>
@@ -105,7 +116,17 @@ if (!isset($_SESSION["email"])) {
             <div class="form-group row">
                 <label for="tone" class="col-sm-4 col-form-label">Tone</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="tone" name="tone" placeholder="Eg: Brown">
+                    <select type="text" class="form-control" id="tone" name="tone">
+                        <option value="" selected disabled>Choose Tone</option>
+                        <?php
+                        $arr = ["Olive", "Pale", "Fair", "Medium", "Brown", "Dark"];
+                        foreach ($arr as $a) {
+                        ?>
+                            <option><?php echo $a ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <button type="submit" name="submit" class="btn btn-outline-dark">Add</button>
@@ -134,23 +155,9 @@ if (isset($_POST["submit"])) {
     $result = mysqli_query($connect, $query);
 
     if ($result) {
-?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Color Added</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php
+        echo "<script>window.location.assign('add_color.php?msg=Color Added!!')</script>";
     } else {
-    ?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Color Not Added Try Again Later!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-<?php
+        echo "<script>window.location.assign('add_color.php?msg=Error while adding!!')</script>";
     }
 }
 ?>
@@ -159,18 +166,7 @@ if (isset($_POST["submit"])) {
 $s_no = 1;
 ?>
 
-<?php
-if (isset($_GET["msg"])) {
-?>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong><?php echo $_GET['msg'] ?></strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-<?php
-}
-?>
+
 
 <?php
 include("footer.php");
