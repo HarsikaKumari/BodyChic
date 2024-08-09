@@ -61,12 +61,12 @@ if (!isset($_SESSION["email"])) {
 <div class="breadcrumb-contentnhy">
     <div class="container">
         <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Admin</h2>
+            <h2 class="hny-title text-center">Category</h2>
             <ol class="breadcrumb mb-0">
                 <li><a href="index.php">Home</a>
                     <span class="fa fa-angle-double-right"></span>
                 </li>
-                <li class="active">Admin</li>
+                <li class="active">Category</li>
             </ol>
         </nav>
     </div>
@@ -77,7 +77,18 @@ if (!isset($_SESSION["email"])) {
 <div class="p-4 form_div">
 
     <div class="form-container">
-
+        <?php
+        if (isset($_GET['msg'])) {
+        ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><?php echo $_GET['msg'] ?></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php
+        }
+        ?>
         <div class="header-container">
             <img src="./assets/images/addIcon.png" alt="addIcon">
             <strong>Add Category</strong>
@@ -96,6 +107,14 @@ if (!isset($_SESSION["email"])) {
                     <input type="file" class="form-control-file" id="thumbnail" name="thumbnail">
                 </div>
             </div>
+            <div class="form-group row">
+                <label for="gender" class="col-sm-4 col-form-label">Gender</label>
+                <div class="col-sm-8">
+                    <input type="radio" id="gender" name="gender" value="Male" placeholder="Eg: Female">Male
+                    <input type="radio" id="gender" name="gender" placeholder="Eg: Female" value="Female">Female
+                    <input type="radio" id="gender" name="gender" placeholder="Eg: Female" value="Both">Both
+                </div>
+            </div>
             <button type="submit" name="submit" class="btn btn-outline-dark">Add</button>
         </form>
     </div>
@@ -105,6 +124,7 @@ if (!isset($_SESSION["email"])) {
 <?php
 if (isset($_POST["submit"])) {
     $category = $_POST["category"];
+    $gender = $_POST["gender"];
     $thumbnail = $_FILES["thumbnail"];
     // print_r($thumbnail);
 
@@ -116,27 +136,13 @@ if (isset($_POST["submit"])) {
 
     include("config.php");
 
-    $query = "INSERT INTO `category`(`category_name`, `thumbnail`) VALUES('$category', '$thumbnail_new_name') ";
+    $query = "INSERT INTO `category`(`category_name`, `thumbnail`,`gender`) VALUES('$category', '$thumbnail_new_name','$gender') ";
     $result = mysqli_query($connect, $query);
 
     if ($result) {
-?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Category Added</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php
+        echo "<script>window.location.assign('add_category.php?msg=Category Added')</script>";
     } else {
-    ?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Category Not Added Try Again Later!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-<?php
+        echo "<script>window.location.assign('add_category.php?msg=Error Whiile adding!!')</script>";
     }
 }
 ?>
