@@ -1,17 +1,65 @@
 <?php
 include("admin_header.php")
 ?>
+<style>
+    .form_div {
+        background-image: url('./assets/images/formCategory.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        color: red;
+        height: 100vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
 
+    .form-container {
+        padding: 20px;
+        margin-left: 30%;
+        border: 1px solid red;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .form-group label {
+        color: red;
+    }
+
+    .btn-outline-dark {
+        color: red;
+        border-color: red;
+    }
+
+    .btn-outline-dark:hover {
+        background-color: red;
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            justify-content: center;
+        }
+
+        .form-container {
+            margin: 20px;
+            width: auto;
+        }
+    }
+</style>
 <!-- breadcrumb section -->
 <div class="breadcrumb-contentnhy">
     <div class="container">
         <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Admin</h2>
+            <h2 class="hny-title text-center">Color</h2>
             <ol class="breadcrumb mb-0">
                 <li><a href="index.php">Home</a>
                     <span class="fa fa-angle-double-right"></span>
                 </li>
-                <li class="active">Admin</li>
+                <li class="active">Color</li>
             </ol>
         </nav>
     </div>
@@ -85,7 +133,22 @@ $data = mysqli_fetch_assoc($result);
             <div class="form-group row">
                 <label for="gender" class="col-sm-4 col-form-label">Tone</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="tone" name="tone" placeholder="Eg: Brown" value="<?php echo $data['tone'] ?>">
+                    <select type="text" class="form-control" id="tone" name="tone">
+                        <option value="" disabled>Choose Tone</option>
+                        <?php
+                        $arr = ["Olive", "Pale", "Fair", "Medium", "Brown", "Dark"];
+                        foreach ($arr as $a) {
+                        ?>
+                            <option
+                                <?php
+                                if ($data['tone'] == $a) {
+                                    echo "selected";
+                                }
+                                ?>><?php echo $a ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <button type="submit" name="submit" class="btn btn-outline-dark">Save</button>
