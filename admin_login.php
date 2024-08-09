@@ -1,5 +1,5 @@
 <?php
-include("admin_header.php")
+include("header.php")
 ?>
 
 <!-- breadcrumb section -->
@@ -11,7 +11,7 @@ include("admin_header.php")
                 <li><a href="index.php">Home</a>
                     <span class="fa fa-angle-double-right"></span>
                 </li>
-                <li class="active">Admin</li>
+                <li class="active">Login</li>
             </ol>
         </nav>
     </div>
@@ -72,7 +72,7 @@ include("admin_header.php")
                     }
                     ?>
                     <h5 class="text-center mb-4">Admin Login</h5>
-                    <form action="" method="post">
+                    <form method="post">
 
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" placeholder="Email" required="">
@@ -114,7 +114,6 @@ if (isset($_REQUEST["submit"])) {
         $_SESSION["user_type"] = "admin";
         $_SESSION["name"] = $data["name"];
         $_SESSION["user_id"] = $data["id"];
-
         echo "<script>window.location.assign('admin_index.php?msg=Login successfully!!')</script>";
     } else {
         echo "<script>window.location.assign('admin_login.php?msg=Invalid credentials')</script>";
