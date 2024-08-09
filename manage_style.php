@@ -9,12 +9,12 @@ if (!isset($_SESSION["email"])) {
 <div class="breadcrumb-contentnhy">
     <div class="container">
         <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Admin</h2>
+            <h2 class="hny-title text-center">Style</h2>
             <ol class="breadcrumb mb-0">
                 <li><a href="index.php">Home</a>
                     <span class="fa fa-angle-double-right"></span>
                 </li>
-                <li class="active">Admin</li>
+                <li class="active">Style</li>
             </ol>
         </nav>
     </div>
@@ -56,7 +56,6 @@ if (isset($_GET["msg"])) {
                     <th>Image</th>
                     <th>Name</th>
                     <th>Body Type</th>
-                    <th>Gender</th>
                     <th>Category</th>
                     <th>Edit</th>
                     <th>Delete</th>
@@ -66,7 +65,7 @@ if (isset($_GET["msg"])) {
                 include("config.php");
                 //2. query
                 //SELECT * from `table`
-                $query = "SELECT * from `styles`";
+                $query = "SELECT styles.*,category.category_name from `styles` inner join `category` on styles.category=category.id";
                 //3. query run with database
                 $result = mysqli_query($connect, $query);
                 //4. result use
@@ -84,8 +83,7 @@ if (isset($_GET["msg"])) {
                         <td><?php echo $data['name'] ?>
                         </td>
                         <td><?php echo $data['bodytype'] ?></td>
-                        <td><?php echo $data['gender'] ?></td>
-                        <td><?php echo $data['category'] ?></td>
+                        <td><?php echo $data['category_name'] ?></td>
                         <td>
                             <a href="edit_style.php?id=<?php echo $data['id'] ?>" class="btn btn-primary">
                                 <img src="./assets/images/editIcon.png" alt="EditButton">

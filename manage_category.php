@@ -8,12 +8,12 @@ include("session_check.php")
 <div class="breadcrumb-contentnhy">
     <div class="container">
         <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Admin</h2>
+            <h2 class="hny-title text-center">Category</h2>
             <ol class="breadcrumb mb-0">
                 <li><a href="index.php">Home</a>
                     <span class="fa fa-angle-double-right"></span>
                 </li>
-                <li class="active">Admin</li>
+                <li class="active">Category</li>
             </ol>
         </nav>
     </div>
@@ -64,6 +64,7 @@ if (isset($_GET["msg"])) {
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $s_no ?></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><?php echo $data["category_name"] ?></h6>
+                    <div class="card-text my-2"><img src="./assets/images/equality.png" style="height:30px; width:30px;" /><?php echo $data['gender'] ?></div>
                     <p class="card-img-top">
                         <img src="category_images/<?php echo $data['thumbnail'] ?>" style="height:200px;width:250px;">
                     </p>

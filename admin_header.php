@@ -89,7 +89,7 @@ session_start()
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="user_list.php">Users</a>
+                                        <a class="nav-link" href="user-list.php">Users</a>
                                     </li>
                                     <!-- <ul class="top-hnt-right-content col-lg-6"> -->
 

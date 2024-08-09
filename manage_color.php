@@ -10,12 +10,12 @@ if (!isset($_SESSION["email"])) {
 <div class="breadcrumb-contentnhy">
     <div class="container">
         <nav aria-label="breadcrumb">
-            <h2 class="hny-title text-center">Admin</h2>
+            <h2 class="hny-title text-center">Color</h2>
             <ol class="breadcrumb mb-0">
                 <li><a href="index.php">Home</a>
                     <span class="fa fa-angle-double-right"></span>
                 </li>
-                <li class="active">Admin</li>
+                <li class="active">Color</li>
             </ol>
         </nav>
     </div>
@@ -117,7 +117,7 @@ if (isset($_GET["msg"])) {
         ?>
 
         <?php
-            $s_no++;
+            $sno++;
         }
         ?>
     </div>

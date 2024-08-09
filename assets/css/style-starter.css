@@ -4924,7 +4924,7 @@ p.sbmincart-empty-text {
 }
 
 .btn-group.bootstrap-select.show-tick button {
-  padding: 8px 10px;
+  padding: 0px 10px;
 }
 
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
