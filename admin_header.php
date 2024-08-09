@@ -44,7 +44,7 @@ session_start()
                         <div class="container-fluid serarc-fluid">
                             <a class="navbar-brand" href="index.php">
                                 Body<span class="lohny">C</span>hic</a>
-                            
+
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon fa fa-bars"> </span>
                             </button>
@@ -88,13 +88,14 @@ session_start()
                                             </div>
                                         </div>
                                     </li>
-
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="user_list.php">Users</a>
+                                    </li>
                                     <!-- <ul class="top-hnt-right-content col-lg-6"> -->
 
-                                    <li class="nav-item button-log usernhy">
-                                        <a class="nav-link btn-open d-flex justify-content-center pe-4" href="./index.php">
-                                            <span class="fa fa-user" aria-hidden="true"></span>
-                                            <span class="" aria-hidden="true">Logout</span>
+                                    <li class="nav-item  ">
+                                        <a class="nav-link  d-flex justify-content-center pe-4" href="logout.php">
+                                            <span class="fa fa-user pt-1" aria-hidden="true"></span>Logout
                                         </a>
                                     </li>
                                     <!-- </ul> -->

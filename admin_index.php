@@ -2,10 +2,7 @@
 include("admin_header.php");
 //session check
 include("session_check.php");
-
 ?>
-
-
 <div class="breadcrumb-contentnhy">
     <div class="container">
         <nav aria-label="breadcrumb">
@@ -21,128 +18,161 @@ include("session_check.php");
 </div>
 </div>
 </section>
-<center>
-    <h1>Welcome admin</h1>
-    <p><?php echo $_SESSION["email"] ?></p>
-    <p><?php echo $_SESSION["name"] ?></p>
-</center>
 
+<section class="w3l-customers-sec-6">
+    <div class="customers-sec-6-cintent py-5">
+        <!-- /customers-->
+        <div class="container py-lg-5">
+            <h3 class="hny-title text-center mb-0 ">Welcome <span><?php echo $_SESSION["name"] ?></span></h3>
 
-<?php
+            <div class="row customerhny my-lg-5 my-4">
+                <div class="col-md-12">
+                    <div id="customerhnyCarousel" class="carousel slide" data-ride="carousel">
 
-include('config.php');
+                        <ol class="carousel-indicators">
+                            <li data-target="#customerhnyCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#customerhnyCarousel" data-slide-to="1"></li>
+                        </ol>
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
 
-// Fetch total styles
-$totalStyles = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(*) AS count FROM styles"))['count'];
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="customer-info text-center">
+                                            <div class="feedback-hny">
+                                                <?php
+                                                include("config.php");
+                                                $query = "SELECT count(*) as total_male from `users` where `gender`='Male'";
+                                                $res = mysqli_query($connect, $query);
+                                                $data = mysqli_fetch_assoc($res);
+                                                ?>
+                                                <span class="fa fa-quote-left"></span>
+                                                <p class="feedback-para"><?php echo $data['total_male'] ?></p>
+                                            </div>
+                                            <div class="feedback-review mt-4">
 
-// Fetch total categories
-$totalCategories = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(*) AS count FROM category"))['count'];
+                                                <h5>Male Users</h5>
 
-// Fetch total colors
-$totalColors = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(*) AS count FROM colors"))['count'];
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="customer-info text-center">
+                                            <div class="feedback-hny">
+                                                <?php
+                                                include("config.php");
+                                                $query = "SELECT count(*) as total_female from `users` where `gender`='Female'";
+                                                $res = mysqli_query($connect, $query);
+                                                $data = mysqli_fetch_assoc($res);
+                                                ?>
+                                                <span class="fa fa-quote-left"></span>
+                                                <p class="feedback-para"><?php echo $data['total_female'] ?></p>
+                                            </div>
+                                            <div class="feedback-review mt-4">
 
-// Fetch total users
-$totalUsers = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(*) AS count FROM users"))['count'];
-?>
+                                                <h5>Female Users</h5>
 
-<!DOCTYPE html>
-<html lang="en">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="customer-info text-center">
+                                            <div class="feedback-hny">
+                                                <?php
+                                                include("config.php");
+                                                $query = "SELECT count(*) as total_user from `users`";
+                                                $res = mysqli_query($connect, $query);
+                                                $data = mysqli_fetch_assoc($res);
+                                                ?>
+                                                <span class="fa fa-quote-left"></span>
+                                                <p class="feedback-para"><?php echo $data['total_user'] ?></p>
+                                            </div>
+                                            <div class="feedback-review mt-4">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-    <style>
-        /* Add this CSS to your existing stylesheet */
+                                                <h5>Total Users</h5>
 
-        /* Dashboard Container */
-        .dashboard-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            padding: 20px;
-        }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="customer-info text-center">
+                                            <div class="feedback-hny">
+                                                <?php
+                                                include("config.php");
+                                                $query = "SELECT count(*) as total_style from `styles`";
+                                                $res = mysqli_query($connect, $query);
+                                                $data = mysqli_fetch_assoc($res);
+                                                ?>
+                                                <span class="fa fa-quote-left"></span>
+                                                <p class="feedback-para"><?php echo $data['total_style'] ?></p>
+                                            </div>
+                                            <div class="feedback-review mt-4">
+                                                <h5>Total Styles</h5>
 
-        /* Card Styles */
-        .card {
-            background-color: #dc3545;
-            /* Red background */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 250px;
-            height: 150px;
-            margin: 10px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+                                            </div>
+                                        </div>
+                                    </div>
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+                                </div>
+                                <!--.row-->
+                            </div>
+                            <!--.item-->
 
-        /* Card Titles */
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="customer-info text-center">
+                                            <div class="feedback-hny">
+                                                <?php
+                                                include("config.php");
+                                                $query = "SELECT count(*) as total_category from `category`";
+                                                $res = mysqli_query($connect, $query);
+                                                $data = mysqli_fetch_assoc($res);
+                                                ?>
+                                                <span class="fa fa-quote-left"></span>
+                                                <p class="feedback-para"><?php echo $data['total_category'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="feedback-review mt-4">
+                                            <h5 class="text-center">Total Category</h5>
 
-        /* Card Values */
-        .card-text {
-            font-size: 36px;
-            font-weight: 700;
-        }
+                                        </div>
+                                    </div>
 
-        /* General Page Styling */
+                                    <div class="col-md-3">
+                                        <div class="customer-info text-center">
+                                            <div class="feedback-hny">
+                                                <?php
+                                                include("config.php");
+                                                $query = "SELECT count(*) as total_color from `colors`";
+                                                $res = mysqli_query($connect, $query);
+                                                $data = mysqli_fetch_assoc($res);
+                                                ?>
+                                                <span class="fa fa-quote-left"></span>
+                                                <p class="feedback-para"><?php echo $data['total_color'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="feedback-review mt-4">
+                                            <h5 class="text-center">Total color</h5>
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            margin: 0;
-            padding: 0;
-        }
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--.row-->
+                            </div>
+                            <!--.item-->
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-    </style>
-</head>
+                        </div>
+                        <!--.carousel-inner-->
+                    </div>
+                    <!--.Carousel-->
 
-<body>
-
-    <div class="container mt-5">
-        <div class="row mt-5 dashboard-container">
-            <div class="card">
-                <div class="card-title">Total Styles</div>
-                <div class="card-text"><?php echo $totalStyles; ?></div>
-            </div>
-            <div class="card">
-                <div class="card-title">Total Categories</div>
-                <div class="card-text"><?php echo $totalCategories; ?></div>
-            </div>
-            <div class="card">
-                <div class="card-title">Total Colors</div>
-                <div class="card-text"><?php echo $totalColors; ?></div>
-            </div>
-            <div class="card">
-                <div class="card-title">Total Users</div>
-                <div class="card-text"><?php echo $totalUsers; ?></div>
+                </div>
             </div>
         </div>
     </div>
-
-</body>
-
-</html>
-
-
+</section>
 <?php
 include("footer.php");
 ?>
