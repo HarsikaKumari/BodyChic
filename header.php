@@ -63,23 +63,29 @@ session_start();
                                     <li class="nav-item">
                                         <a class="nav-link" href="color.php">Colors</a>
                                     </li>
-
+                                    <?php if (isset($_SESSION['email'])) { ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="profile.php">Profile</a>
+                                        </li>
+                                    <?php
+                                    }
+                                    ?>
                                     <!-- <ul class="top-hnt-right-content col-lg-6"> -->
 
                                     <li class="nav-item button-log ">
-                                        <a class="" href="#">
+                                        <!-- <a class="" href="#"> -->
 
-                                                <?php if (isset($_SESSION['email'])) { ?>
-                                                    <a class="nav-link btn-open" href="logout.php">
-                                                        <span class="fa fa-user" aria-hidden="true"></span>Logout
-                                                    </a>
-                                                <?php } else { ?>
-                                                    <a class="nav-link btn-open" href="#">
-                                                        <span class="fa fa-user" aria-hidden="true"></span>Login
-                                                    </a>
-                                                <?php } ?>
-                                                
-                                        </a>
+                                        <?php if (isset($_SESSION['email'])) { ?>
+                                            <a class="nav-link btn-open2" href="logout.php">
+                                                <span class="fa fa-user" aria-hidden="true"></span>Logout
+                                            </a>
+                                        <?php } else { ?>
+                                            <a class="nav-link btn-open2" href="#">
+                                                <span class="fa fa-user" aria-hidden="true"></span>Login
+                                            </a>
+                                        <?php } ?>
+
+                                        <!-- </a> -->
                                     </li>
                                     <!-- </ul> -->
                                 </ul>

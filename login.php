@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +47,8 @@
                 <div class="form-group">
                     <a class="login-texthny mb-2 text-light" href="./register.php">Don't have an account? Register</a>
                 </div>
-                <button type="submit" name="submit" class="submit-login btn mb-4">Sign In</button>
+                <button type="submit" name="submit_login" class="submit-login btn mb-4">Sign In</button>
+                <span class="text-light">Admin- <a class="text-primary" href="admin_login.php">Login Here</a></span>
             </form>
             <!--//login-form-->
         </div>
@@ -55,7 +59,7 @@
 
 <?php
 
-if (isset($_POST["submit"])) {
+if (isset($_POST["submit_login"])) {
     $email = $_POST["email"];
     $password = md5($_POST["password"]);
 
@@ -81,8 +85,9 @@ if (isset($_POST["submit"])) {
         $_SESSION["email"] = $email;
         $_SESSION["user_type"] = "user";
         $_SESSION["name"] = $data["name"];
-        $_SESSION["bodyType"] = $data["bodyType"];
-
+        $_SESSION["bodyType"] = $data["body_shape"];
+        $_SESSION["gender"] = $data['gender'];
+        $_SESSION["tone"] = $data["colortone"];
         // Redirect to index page with success message
         echo "<script>window.location.assign('index.php?msg=Login successfully!!')</script>";
     } else {

@@ -172,20 +172,14 @@ include("session_check.php")
                     </div>
                     <div class="form-group">
                         <label for="colorTone">Color Tone</label>
-                        <!-- <select id="colorTone" class="form-control" name="colorTone" required>
-                            <option value="">Select Color Tone</option>
-                            <option value="Light">Light</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Dark">Dark</option>
-                        </select> -->
-                        <select id="colorTone" class="form-control pb-2 mr-4" name="color">
-                            <option value="">Select Color Tone</option>
+                        <select type="text" class="form-control" id="tone" name="tone">
+                            <option value="" selected disabled>Choose Tone</option>
                             <?php
-                            include("config.php");
-                            $query = "SELECT * from `colors`";
-                            $result = mysqli_query($connect, $query);
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                            $arr = ["Olive", "Pale", "Fair", "Medium", "Brown", "Dark"];
+                            foreach ($arr as $a) {
+                            ?>
+                                <option><?php echo $a ?></option>
+                            <?php
                             }
                             ?>
                         </select>
@@ -213,13 +207,10 @@ include("session_check.php")
                 $waistSize = $_POST['waistSize'];
                 $highHipSize = $_POST['highHipSize'];
                 $hipSize = $_POST['hipSize'];
-                $colorToneId = $_POST['color'];
+                $colorTone = $_POST['tone'];
 
                 include("config.php");
-                // Fetch the color tone name from the database
-                $query = "SELECT `name` FROM `colors` WHERE `id` = '$colorToneId'";
-                $result = mysqli_query($connect, $query);
-                $colorToneName = mysqli_fetch_assoc($result)['name'];
+
 
                 // Calculate body ratio
                 $bustWaistRatio = $bustSize / $waistSize;
@@ -238,7 +229,7 @@ include("session_check.php")
 
                 echo "<div class='result-display'>";
                 echo "<h3>Your Body Type: $bodyType</h3>";
-                echo "<p>Color Tone: $colorToneName</p>";
+                echo "<p>Color Tone: $colorTone</p>";
                 echo "<button class='btn-explore' onclick=\"window.location.href='styles.php'\">Explore More Styles</button>";
                 echo "</div>";
 
@@ -247,11 +238,12 @@ include("session_check.php")
 
                 $email = $_GET["email"];
 
-                $query = "UPDATE `users` SET `bust_size` = '$bustSize', `waist_size` = '$waistSize', `high_hip_size` = '$highHipSize', `body_shape` = '$bodyType', `hip_size` = '$hipSize' WHERE `email` = '$email'";
+                $query = "UPDATE `users` SET `bust_size` = '$bustSize', `waist_size` = '$waistSize', `high_hip_size` = '$highHipSize', `body_shape` = '$bodyType', `hip_size` = '$hipSize',`colortone`='$colorTone' WHERE `email` = '$email'";
 
                 $result = mysqli_query($connect, $query);
-                if ($result) {
+                if ($result > 0) {
                     $_SESSION["bodyType"] = $bodyType;
+                    $_SESSION["tone"] = $colorTone;
             ?>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>Information Added Successfully</strong>
