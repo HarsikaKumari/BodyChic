@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 // Display any messages if set
 if (isset($_GET["msg"])) {
@@ -190,7 +190,7 @@ if (isset($_GET["msg"])) {
 			<div class="container py-lg-5">
 
 				<h3 class="hny-title mb-0 text-center">Let's Explore <span>Styles</span></h3>
-				<p class="mb-4 text-center">Handpicked Favourites just for you</p>
+				<p class="mb-4 text-center">One Favorites just for you</p>
 
 				<div class="welcome-grids row mt-5">
 
@@ -230,7 +230,7 @@ if (isset($_GET["msg"])) {
 					<div class="col-lg-2 col-md-4 col-6 welcome-image">
 						<div class="boxhny13">
 							<a href="styles.php">
-								<img src="assets/images/grid3.jpg" class="img-fluid" alt="" />
+								<img src="assets/images/hourglassDress.webp" class="img-fluid" style="height:160px;width:160px;" alt="" />
 								<div class="boxhny-content">
 									<h3 class="title">More</h3>
 								</div>
